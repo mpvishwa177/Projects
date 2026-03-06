@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Todo App</title>
+
+<link rel="stylesheet" href="todo.css">
+
+</head>
+
+<body>
+
+<h1>Todo List</h1>
+
+<div class="todo-container">
+
+<input type="text" id="taskInput" placeholder="Enter a task">
+
+<button onclick="addTask()">Add Task</button>
+
+</div>
+
+<ul id="taskList"></ul>
+
+<div class="stats">
+
+<p>Completed: <span id="completedCount">0</span></p>
+
+<p>Pending: <span id="pendingCount">0</span></p>
+
+<div class="progress-container">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+</div>
+
+<script src="todo.js"></script>
+
+</body>
+</html>

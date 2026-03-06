@@ -1,0 +1,101 @@
+body{
+font-family: Arial, sans-serif;
+max-width: 550px;
+margin: auto;
+text-align: center;
+background:#f9f9f9;
+}
+
+h1{
+margin-top:30px;
+margin-bottom:20px;
+}
+
+.todo-container{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+input{
+padding:10px;
+flex:1;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+button{
+padding:10px 15px;
+cursor:pointer;
+border:none;
+background:#333;
+color:white;
+border-radius:4px;
+}
+
+button:hover
+
+ul{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+li{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px;
+border-bottom:1px solid #ddd;
+background:white;
+}
+
+li:hover
+
+.task-left{
+display:flex;
+align-items:center;
+gap:12px;
+flex:1;
+text-align:left;
+}
+
+.task-left span{
+word-break:break-word;
+}
+
+.completed{
+text-decoration:line-through;
+color:gray;
+}
+
+.delete-btn{
+background:red;
+color:white;
+border:none;
+padding:6px 12px;
+cursor:pointer;
+border-radius:4px;
+}
+
+.delete-btn:hover
+
+.stats{
+margin-top:25px;
+}
+
+.progress-container{
+width:100%;
+background:#ddd;
+height:18px;
+margin-top:10px;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#4caf50;
+transition:0.3s;
+}

@@ -1,0 +1,17 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    max-width: 500px;
+    margin: auto;
+}
+
+.form input, .form select, .form button {
+    margin: 5px 0;
+    padding: 8px;
+    width:100%;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
