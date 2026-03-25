@@ -1,60 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Grocery Store</title>
+  <title>Grocery App</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 20px;
     }
 
-    h1 {
-      text-align: center;
+    h2 {
+      margin-top: 20px;
     }
 
-    .container {
-      display: flex;
-      gap: 20px;
-    }
-
-    .products, .cart {
-      flex: 1;
+    .box {
       background: white;
       padding: 15px;
-      border-radius: 8px;
-    }
-
-    .product {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+      border-radius: 5px;
     }
 
     button {
-      background-color: green;
-      color: white;
-      border: none;
+      margin-left: 10px;
       padding: 5px 10px;
+      border: none;
+      background: green;
+      color: white;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: darkgreen;
+      background: darkgreen;
     }
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
+    .remove {
+      background: red;
     }
 
-    .total {
-      font-weight: bold;
-      margin-top: 10px;
+    .remove:hover {
+      background: darkred;
     }
   </style>
 </head>
@@ -62,88 +46,71 @@
 
 <h1>Grocery Store</h1>
 
-<div class="container">
-  
-  <!-- Products -->
-  <div class="products">
-    <h2>Products</h2>
-    <div id="product-list"></div>
-  </div>
+<div class="box">
+  <h2>Products</h2>
+  <div id="products"></div>
+</div>
 
-  <!-- Cart -->
-  <div class="cart">
-    <h2>Cart</h2>
-    <div id="cart-list"></div>
-    <div class="total">Total: ₹<span id="total">0</span></div>
-  </div>
-
+<div class="box">
+  <h2>Cart</h2>
+  <div id="cart"></div>
+  <p><b>Total: ₹<span id="total">0</span></b></p>
 </div>
 
 <script>
-  const products = [
-    { id: 1, name: "Rice", price: 50 },
-    { id: 2, name: "Milk", price: 30 },
-    { id: 3, name: "Bread", price: 25 },
-    { id: 4, name: "Eggs", price: 60 }
-  ];
+const products = [
+  { id: 1, name: "Rice", price: 50 },
+  { id: 2, name: "Milk", price: 30 },
+  { id: 3, name: "Bread", price: 25 }
+];
 
-  let cart = [];
+let cart = [];
 
-  function displayProducts() {
-    const productList = document.getElementById("product-list");
-    productList.innerHTML = "";
+function showProducts() {
+  let html = "";
+  products.forEach(p => {
+    html += `${p.name} - ₹${p.price}
+             <button onclick="add(${p.id})">Add</button><br><br>`;
+  });
+  document.getElementById("products").innerHTML = html;
+}
 
-    products.forEach(product => {
-      const div = document.createElement("div");
-      div.classList.add("product");
+function add(id) {
+  let item = cart.find(p => p.id === id);
+  if (item) item.qty++;
+  else {
+    let product = products.find(p => p.id === id);
+    cart.push({ ...product, qty: 1 });
+  }
+  showCart();
+}
 
-      div.innerHTML = `
-        <span>${product.name} - ₹${product.price}</span>
-        <button onclick="addToCart(${product.id})">Add</button>
-      `;
+function removeItem(id) {
+  let index = cart.findIndex(p => p.id === id);
+  if (cart[index].qty > 1) cart[index].qty--;
+  else cart.splice(index, 1);
+  showCart();
+}
 
-      productList.appendChild(div);
+function showCart() {
+  let html = "";
+  let total = 0;
+
+  if (cart.length === 0) {
+    html = "Cart is empty";
+  } else {
+    cart.forEach(p => {
+      total += p.price * p.qty;
+      html += `${p.name} x ${p.qty}
+               <button class="remove" onclick="removeItem(${p.id})">Remove</button><br><br>`;
     });
   }
 
-  function addToCart(id) {
-    const product = products.find(p => p.id === id);
+  document.getElementById("cart").innerHTML = html;
+  document.getElementById("total").innerText = total;
+}
 
-    const existing = cart.find(item => item.id === id);
-
-    if (existing) {
-      existing.quantity++;
-    } else {
-      cart.push({ ...product, quantity: 1 });
-    }
-
-    displayCart();
-  }
-
-  function displayCart() {
-    const cartList = document.getElementById("cart-list");
-    cartList.innerHTML = "";
-
-    let total = 0;
-
-    cart.forEach(item => {
-      total += item.price * item.quantity;
-
-      const div = document.createElement("div");
-      div.classList.add("cart-item");
-
-      div.innerHTML = `
-        <span>${item.name} x ${item.quantity}</span>
-        <span>₹${item.price * item.quantity}</span>
-      `;
-
-      cartList.appendChild(div);
-    });
-
-    document.getElementById("total").innerText = total;
-  }
-
-  displayProducts();
+showProducts();
 </script>
 
 </body>
