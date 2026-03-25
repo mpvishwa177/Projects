@@ -11,7 +11,7 @@ function addTask(){ // this runs when user adds a task
 const input = document.getElementById("taskInput"); // finds HTML element with id taskinput
 const text = input.value.trim(); // gets user text and trims whitespaces
 
-if(!text){ // if tex is empty shows the alert and stops the function
+if(!text){ // if text is empty shows the alert and stops the function
 alert("Enter a task");
 return;
 }

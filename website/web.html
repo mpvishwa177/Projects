@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Website</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <h1 class="logo">OrgName</h1>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h2>Welcome to Our Organization</h2>
+    <p>We deliver innovative solutions and impactful results.</p>
+    <button onclick="scrollToSection('contact')">Get in Touch</button>
+</section>
+
+<section id="about" class="section">
+    <h2>About Us</h2>
+    <p>
+        We focus on delivering high-quality digital solutions. Our expertise includes
+        UI/UX design, responsive web development, and digital marketing strategies.
+    </p>
+</section>
+
+<section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Web Development</h3>
+            <p>Modern and responsive websites using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="card">
+            <h3>UI/UX Design</h3>
+            <p>Clean and user-friendly interface design.</p>
+        </div>
+        <div class="card">
+            <h3>Digital Marketing</h3>
+            <p>Strategies to improve online presence and engagement.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Organization. All rights reserved.</p>
+</footer>
+
+<script src="web.js"></script>
+</body>
+</html>

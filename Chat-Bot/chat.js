@@ -1,7 +1,7 @@
 const chatBox = document.getElementById("chat-box");
 
-// Load chat history on page load
-window.onload = loadChat;
+// Loading chat history on page load
+//window.onload = loadChat;
 
 // Send message
 function sendMessage() {
@@ -35,7 +35,7 @@ function addMessage(text, sender) {
   saveChat(); // Save after every message
 }
 
-// Bot logic (rule-based)
+// Bot logic-(rule-based)
 function getBotResponse(input) {
   input = input.toLowerCase();
 
